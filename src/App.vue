@@ -1,30 +1,34 @@
 <template>
-  <el-container id="app">
-    <Sidebar width="100px"/>
-    <el-container>
-      <Topbar />
-
-      <router-view></router-view>
-    </el-container>
-  </el-container>
+  <v-app>
+    <v-content>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </v-content>
+    <Nav />
+  </v-app>
 </template>
 
 <script>
-import Topbar from "./components/Topbar.vue";
-import Sidebar from "./components/Sidebar.vue";
+import Nav from "./components/Nav";
+
 export default {
-  name: "app",
+  name: "App",
   components: {
-    Topbar,
-    Sidebar,
+    Nav
   },
 };
 </script>
+<style lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
 
-<style>
-html ,
-body ,
-#app {
-  height: 100%;
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

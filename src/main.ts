@@ -1,10 +1,17 @@
 import Vue from 'vue';
+import './plugins/vuetify';
+import VueLodash from 'vue-lodash';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import 'normalize.css';
 import './registerServiceWorker';
-import './plugins/element.js';
+Vue.use(VueLodash);
+
+router.beforeEach(function (to, from, next) {
+  store.state.pageName = to.name;
+  next();
+});
+
 
 Vue.config.productionTip = false;
 
