@@ -1,13 +1,12 @@
 import Vue from 'vue';
 import './plugins/vuetify';
-import VueLodash from 'vue-lodash';
+import * as _ from "lodash";
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import './registerServiceWorker';
-Vue.use(VueLodash);
 
-router.beforeEach(function (to, from, next) {
+router.beforeEach((to: any, from: any, next: any):void => {
   store.state.pageName = to.name;
   next();
 });

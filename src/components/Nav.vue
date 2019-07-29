@@ -23,41 +23,39 @@
     
   </v-bottom-nav>
 </template>
-
 <script lang="ts">
-export default {
+import { Component, Vue } from 'vue-property-decorator';
+export default Vue.extend({
   data: () => ({
-    bottomNav: 0
+    bottomNav: 0,
   }),
-  created() {
-    const page = this.$route.path.replace('/', '');
-    const number = this.$store.state.pages.indexOf(this.$store.state.pageName);
-    this.bottomNav = number;
+  created(): void {
+    this.bottomNav = this.$store.state.pages.indexOf(this.$store.state.pageName);
   },
   watch: {
-    bottomNav(n: number): any {
+    bottomNav(n: number): void {
       this.$store.dispatch({
-        type: "paging",
-        number: n
+        type: 'paging',
+        number: n,
       });
-    }
+    },
   },
   computed: {
-    color(): [string, undefined] {
+    color(): string {
       switch (this.bottomNav) {
-        default:
-          return undefined;
+        default: 
+          return 'black'
         case 0:
-          return "blue-grey";
+          return 'blue-grey';
         case 1:
-          return "teal";
+          return 'teal';
         case 2:
-          return "brown";
+          return 'brown';
         case 3:
-          return "indigo";
+          return 'indigo';
       }
-    }
-  }
-};
+    },
+  },
+});
 </script>
 

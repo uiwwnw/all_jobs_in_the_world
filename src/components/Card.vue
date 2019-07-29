@@ -37,40 +37,42 @@
 </template>
 
 <script>
+import * as _ from "lodash";
+
 export default {
   data: () => ({
     id: [],
     cards: [
       {
         id: 1,
-        title: "Pre-fab homes",
+        title: "네이버",
         src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
         flex: 12
       },
       {
         id: 2,
-        title: "Favorite road trips",
+        title: "카카오톡",
         src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
         flex: 6
       },
       {
         id: 3,
-        title: "Best airlines",
+        title: "넥슨",
         src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
         flex: 6
       }
-    ]
+    ]// TODO DB
   }),
   mounted() {
-    this.id = this._.cloneDeep(this.$store.state.favorite);
+    this.id = _.cloneDeep(this.$store.state.favorite);
   },
   methods: {
     sharedCard(card) {
       console.log(card);
     },
     toggleFavorite(card) {
-      if (this._.includes(this.id, card.id)) {
-        this.id = this._.without(this.id, card.id);
+      if (_.includes(this.id, card.id)) {
+        this.id = _.without(this.id, card.id);
       } else {
         this.id.push(card.id);
       }

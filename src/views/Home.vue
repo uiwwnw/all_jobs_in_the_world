@@ -27,23 +27,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Card from "@/components/Card.vue"; // @ is an alias to /src
+import { Component, Vue } from 'vue-property-decorator';
+import Card from '@/components/Card.vue'; // @ is an alias to /src
 
 @Component({
   components: {
-    Card
+    Card,
   },
   data: () => ({
     sheet: false,
     tiles: [
-      { img: "keep.png", title: "Keep" },
-      { img: "inbox.png", title: "Inbox" },
-      { img: "hangouts.png", title: "Hangouts" },
-      { img: "messenger.png", title: "Messenger" },
-      { img: "google.png", title: "Google+" }
-    ]
-  })
+      { img: 'keep.png', title: 'Keep' },
+      { img: 'inbox.png', title: 'Inbox' },
+      { img: 'hangouts.png', title: 'Hangouts' },
+      { img: 'messenger.png', title: 'Messenger' },
+      { img: 'google.png', title: 'Google+' },
+    ],
+  }),
 })
 export default class Home extends Vue {}
 </script>

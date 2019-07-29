@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import VueLodash from 'vue-lodash';
+import * as _ from "lodash";
 import router from './router';
 
-Vue.use(VueLodash);
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -12,12 +11,12 @@ export default new Vuex.Store({
     pageName: 'home',
     profile: {
       myName: '',
-      id: ''
+      id: '',
     },
-    favorite: [1],
-    done: [],
-    success: [],
-    false: []
+    favorite: [1], // TODO DB
+    done: [], // TODO DB
+    success: [], // TODO DB
+    false: [], // TODO DB
   },
   mutations: {
     paging(state, obj) {
@@ -30,15 +29,15 @@ export default new Vuex.Store({
       state.favorite.push(obj.id);
     },
     removeFavorite(state, obj) {
-      state.favorite = Vue._.without(state.favorite, obj.id);
+      state.favorite = _.without(state.favorite, obj.id);
     },
   },
   actions: {
-    paging(context, obj: object) {
+    paging(context: any, obj: any) {
       context.commit('paging', obj);
     },
-    toggleFavorite(context, obj: object) {
-      if(Vue._.includes(context.state.favorite, obj.id)) {
+    toggleFavorite(context: any, obj: any) {
+      if (_.includes(context.state.favorite, obj.id)) {
         context.commit('removeFavorite', obj);
       } else {
         context.commit('addFavorite', obj);
